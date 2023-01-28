@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material";
+import { Button, TextField } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import * as Yup from "yup";
 import { FormValues } from "../@types/FormValues";
@@ -68,9 +68,14 @@ export const Home = () => {
             <ErrorMessage name="email" component="div" />
 
             <Submit>
-              <ButtonSubmit type="submit" disabled={!isValid}>
+              <Button
+                variant="contained"
+                size="large"
+                type="submit"
+                disabled={!isValid}
+              >
                 Submit
-              </ButtonSubmit>
+              </Button>
             </Submit>
           </Form>
         )}

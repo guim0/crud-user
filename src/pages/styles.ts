@@ -6,24 +6,13 @@ export const RegisterForm = styled.main`
   border: 1px solid #595d6a;
   border-radius: 10px;
   padding: 1rem;
+  background-color: #79a9d1;
+  color: white;
 `;
 
 export const Submit = styled.div`
   display: flex;
   width: 100%;
-  align-items: center;
-`;
-export const ButtonSubmit = styled.button`
-  padding: 1rem 2rem;
-  border: none;
-  outline: none;
-  border-radius: 10px;
-  max-width: 250px;
-  margin: 0 auto;
-  color: white;
-  background-color: #000505;
-  cursor: pointer;
-  :hover {
-    filter: brightness(1);
-  }
+
+  justify-content: center;
 `;
