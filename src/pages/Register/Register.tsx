@@ -1,17 +1,19 @@
-import { Button, TextField } from "@mui/material";
+import { TextField } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useContext } from "react";
-import { IFormValues } from "../../@types/IFormValues";
+import { useNavigate } from "react-router-dom";
+import { IFormValues } from "../../@types/FormValues";
+
 import { ButtonSubmit } from "../../components/ButtonSubmit";
 import { FormContext } from "../../context/userContext";
+import { routes } from "../../routes";
 import { formValidation } from "../../validation/FormValidation";
-import { Submit } from "../Register/styles";
-import { registerSchema } from "../Register/validation";
-import { FormContainer, PreviewData, Table } from "./styles";
+import { Container, RegisterForm } from "./styles";
 
-export const Home = () => {
-  const { name, surname, email, setName, setSurname, setEmail } =
-    useContext(FormContext);
+export const Register = () => {
+  const { setName, setSurname, setEmail } = useContext(FormContext);
+
+  const navigate = useNavigate();
 
   const handleSubmit = (values: IFormValues) => {
     setName(values.name);
@@ -19,41 +21,16 @@ export const Home = () => {
     setEmail(values.email);
 
     console.log(values);
+    if (values) return navigate(routes.home);
   };
   return (
-    <main>
-      <PreviewData>
-        <h3>
-          Olá {name} {surname ?? surname}
-        </h3>
+    <Container>
+      <RegisterForm>
+        <h1>Create your User</h1>
+        <p>Crie seu usuário</p>
 
-        <h2>Aqui você pode visualizar e editar seus dados</h2>
-        <h4>Atualmente seus dados são</h4>
-        <Table>
-          <tr>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>Email</th>
-          </tr>
-          <tr>
-            <td>{name}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td>{surname}</td>
-          </tr>
-          <tr>
-            <td></td>
-            <td></td>
-            <td>{email}</td>
-          </tr>
-        </Table>
-      </PreviewData>
-
-      <FormContainer>
-        <h3>Caso queira atualizar seus dados</h3>
         <Formik
-          initialValues={{ name: name, surname: surname, email: email }}
+          initialValues={{ name: "", email: "", surname: "" }}
           validationSchema={formValidation}
           onSubmit={handleSubmit}
         >
@@ -95,7 +72,7 @@ export const Home = () => {
             </Form>
           )}
         </Formik>
-      </FormContainer>
-    </main>
+      </RegisterForm>
+    </Container>
   );
 };

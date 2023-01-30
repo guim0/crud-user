@@ -1,26 +1,30 @@
 import styled from "styled-components";
 
-export const Container = styled.main`
-  height: 90vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-export const RegisterForm = styled.section`
+export const FormContainer = styled.section`
   max-width: 550px;
   width: 100%;
-  height: 420px;
-  margin: 0 auto;
-  border: 1px solid #595d6a;
-  border-radius: 10px;
-  padding: 1rem;
   background-color: white;
-  color: #2e393e;
+  padding: 1rem;
+  border-radius: 10px;
+  margin: 0 auto;
+  text-align: center;
 `;
 
-export const Submit = styled.div`
-  display: flex;
-  width: 100%;
+export const Table = styled.table`
+  text-align: center;
+  background-color: white;
+  border-radius: 10px;
+  padding: 0.5rem;
+  margin: 0 auto;
+  td,
+  td {
+    width: 120px;
+  }
+`;
 
-  justify-content: center;
+export const PreviewData = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1rem;
 `;
