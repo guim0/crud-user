@@ -1,5 +1,9 @@
 import React, { createContext, useState } from "react";
 
+interface IFormContext {
+  children: React.ReactNode;
+}
+
 export const FormContext = createContext({
   name: "",
   setName: (name: string) => {},
@@ -11,7 +15,7 @@ export const FormContext = createContext({
   setEditMode: (editMode: boolean) => {},
 });
 
-export const FormContextProvider: React.FC = ({ children }) => {
+export const FormContextProvider = ({ children }: IFormContext) => {
   const [name, setName] = useState("");
   const [surname, setSurname] = useState("");
   const [email, setEmail] = useState("");
