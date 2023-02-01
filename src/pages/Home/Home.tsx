@@ -1,12 +1,12 @@
 import { Button, TextField } from "@mui/material";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { useContext } from "react";
-import { IFormValues } from "../../@types/IFormValues";
+import { IFormValues } from "../../@types/FormValues";
+
 import { ButtonSubmit } from "../../components/ButtonSubmit";
 import { FormContext } from "../../context/userContext";
 import { formValidation } from "../../validation/FormValidation";
-import { Submit } from "../Register/styles";
-import { registerSchema } from "../Register/validation";
+
 import { FormContainer, PreviewData, Table } from "./styles";
 
 export const Home = () => {

@@ -5,6 +5,9 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { routes } from "../../routes";
 import { Button, TextField } from "@mui/material";
+import { ContainerLogin } from "./styles";
+import { useAuth } from "../../context/AuthProvider/useAuth";
+import { toast } from "react-toastify";
 
 interface LoginFormValues {
   email: string;
@@ -20,29 +23,27 @@ const LoginSchema = Yup.object().shape({
 
 const LoginForm: React.FC = () => {
   const [serverError, setServerError] = useState("");
+  const auth = useAuth();
 
   const navigate = useNavigate();
   const handleSubmit = async (values: LoginFormValues) => {
     try {
-      const response = await axios.post("/api/login", values);
-      if (response.data.error) {
-        setServerError(response.data.error);
-      } else {
-        navigate(routes.home);
-      }
+      await auth.authenticate(values.email, values.password);
+      navigate(routes.home);
     } catch (error) {
-      console.error(error);
-      setServerError("An error occurred while logging in");
+      toast.error("Email ou Senha inválidos");
     }
   };
 
   return (
-    <main>
-      <p>Acesse sua conta</p>
-      <p>
-        não possui conta?{" "}
-        <span onClick={() => navigate(routes.register)}>acesse aqui</span>
-      </p>
+    <ContainerLogin>
+      <div>
+        <h3>Acesse sua conta</h3>
+        <p>
+          não possui conta?{" "}
+          <span onClick={() => navigate(routes.register)}>acesse aqui</span>
+        </p>
+      </div>
       <Formik
         initialValues={{ email: "", password: "" }}
         validationSchema={LoginSchema}
@@ -74,15 +75,13 @@ const LoginForm: React.FC = () => {
             />
             <ErrorMessage name="password" component="div" />
 
-            {serverError && <div>{serverError}</div>}
-
             <Button variant="contained" type="submit" disabled={isSubmitting}>
               Login
             </Button>
           </Form>
         )}
       </Formik>
-    </main>
+    </ContainerLogin>
   );
 };
 

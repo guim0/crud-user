@@ -5,37 +5,45 @@ import "./App.css";
 import { FormContextProvider } from "./context/userContext";
 import { Home } from "./pages/Home/Home";
 import LoginForm from "./pages/Login/Login";
+import { AuthProvider } from "./context/AuthProvider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={routes.login}
-          element={
-            <FormContextProvider>
-              <LoginForm />
-            </FormContextProvider>
-          }
-        />
-        <Route
-          path={routes.register}
-          element={
-            <FormContextProvider>
-              <Register />
-            </FormContextProvider>
-          }
-        />
-        <Route
-          path={routes.home}
-          element={
-            <FormContextProvider>
-              <Home />
-            </FormContextProvider>
-          }
-        />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <AuthProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route
+              path={routes.login}
+              element={
+                <FormContextProvider>
+                  <LoginForm />
+                </FormContextProvider>
+              }
+            />
+            <Route
+              path={routes.register}
+              element={
+                <FormContextProvider>
+                  <Register />
+                </FormContextProvider>
+              }
+            />
+            <Route
+              path={routes.home}
+              element={
+                <FormContextProvider>
+                  <Home />
+                </FormContextProvider>
+              }
+            />
+          </Routes>
+        </BrowserRouter>
+      </AuthProvider>
+      <ToastContainer />
+    </>
   );
 }
 

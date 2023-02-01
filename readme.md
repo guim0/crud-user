@@ -9,6 +9,16 @@ this project was created just to study.
 - run `yarn`
 - then `yarn dev`
 
+---
+
+### After the app started, you can try to login, but it won't work because the credencials are mocked, so try this:
+
+email: `eve.holt@reqres.in`
+
+password: `cityslicka`
+
+---
+
 ### Techs and libs used on the project
 
 - [Package manager Yarn](https://yarnpkg.com/)
@@ -17,6 +27,8 @@ this project was created just to study.
 - [Styled-Components](https://styled-components.com/)
 - [Material UI](https://mui.com/)
 - [Context API from React itself](https://reactjs.org/docs/context.html)
+- [Toastify React](https://fkhadra.github.io/react-toastify/introduction)
+- [REQRES to fake an api](https://reqres.in/)
 
 ---
 
