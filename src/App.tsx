@@ -8,6 +8,7 @@ import LoginForm from "./pages/Login/Login";
 import { AuthProvider } from "./context/AuthProvider";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { ProtectedLayout } from "./components/ProtectedLayout";
 
 function App() {
   return (
@@ -31,11 +32,14 @@ function App() {
                 </FormContextProvider>
               }
             />
+
             <Route
               path={routes.home}
               element={
                 <FormContextProvider>
-                  <Home />
+                  <ProtectedLayout>
+                    <Home />
+                  </ProtectedLayout>
                 </FormContextProvider>
               }
             />
