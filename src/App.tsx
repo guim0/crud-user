@@ -37,9 +37,7 @@ function App() {
               path={routes.home}
               element={
                 <FormContextProvider>
-                  <ProtectedLayout>
-                    <Home />
-                  </ProtectedLayout>
+                  <Home />
                 </FormContextProvider>
               }
             />
